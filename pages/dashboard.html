@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - TextShare</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftextshare8100back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-secondary-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">TextShare</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Home</a>
+                    <a href="discover.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Discover</a>
+                    <a href="dashboard.html" class="text-primary-600 font-medium">Dashboard</a>
+                    <a href="profile.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Profile</a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='text_editor.html'" class="btn-primary">
+                        <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Create
+                    </button>
+                    <button class="p-2 text-secondary-600 hover:text-primary-600 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="bg-gradient-to-r from-primary-50 to-accent-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary mb-2">Dashboard</h1>
+                    <p class="text-secondary-600">Manage your shares, track performance, and collaborate with your team</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                    <div class="text-sm text-secondary-600">
+                        Last updated: Oct 1, 2025 at 12:35 PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Overview -->
+    <section class="py-8 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Shares -->
+                <div class="card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-secondary-600 mb-1">Total Shares</p>
+                            <p class="text-2xl font-bold text-text-primary">47</p>
+                            <p class="text-sm text-success-600">+12% this month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Views -->
+                <div class="card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-secondary-600 mb-1">Total Views</p>
+                            <p class="text-2xl font-bold text-text-primary">12.4k</p>
+                            <p class="text-sm text-success-600">+28% this month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Engagement Rate -->
+                <div class="card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-secondary-600 mb-1">Engagement Rate</p>
+                            <p class="text-2xl font-bold text-text-primary">8.7%</p>
+                            <p class="text-sm text-success-600">+3.2% this month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collections -->
+                <div class="card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-secondary-600 mb-1">Collections</p>
+                            <p class="text-2xl font-bold text-text-primary">8</p>
+                            <p class="text-sm text-secondary-500">3 shared collections</p>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Chart -->
+            <div class="card mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-text-primary">Performance Overview</h3>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-sm text-secondary-600 hover:text-primary-600 transition-colors px-3 py-1 rounded-lg hover:bg-primary-50">7 days</button>
+                        <button class="text-sm bg-primary-100 text-primary-600 px-3 py-1 rounded-lg">30 days</button>
+                        <button class="text-sm text-secondary-600 hover:text-primary-600 transition-colors px-3 py-1 rounded-lg hover:bg-primary-50">90 days</button>
+                    </div>
+                </div>
+                <div class="h-64 bg-secondary-50 rounded-lg flex items-center justify-center">
+                    <svg class="w-full h-full" viewBox="0 0 800 200">
+                        <!-- Chart Grid -->
+                        <defs>
+                            <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+                            </pattern>
+                        </defs>
+                        <rect width="800" height="200" fill="url(#grid)"/>
+                        
+                        <!-- Views Line -->
+                        <polyline fill="none" stroke="#2563EB" stroke-width="3" points="50,150 150,120 250,100 350,80 450,90 550,70 650,60 750,50"/>
+                        
+                        <!-- Shares Line -->
+                        <polyline fill="none" stroke="#F59E0B" stroke-width="3" points="50,170 150,160 250,140 350,130 450,125 550,115 650,110 750,100"/>
+                        
+                        <!-- Data Points -->
+                        <circle cx="750" cy="50" r="4" fill="#2563EB"/>
+                        <circle cx="750" cy="100" r="4" fill="#F59E0B"/>
+                    </svg>
+                </div>
+                <div class="flex items-center justify-center space-x-6 mt-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-primary-600 rounded-full"></div>
+                        <span class="text-sm text-secondary-600">Views</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-accent-500 rounded-full"></div>
+                        <span class="text-sm text-secondary-600">Shares</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Management -->
+    <section class="py-8 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Filters and Controls -->
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                <div class="flex items-center space-x-4 mb-4 lg:mb-0">
+                    <h2 class="text-xl font-semibold text-text-primary">My Shares</h2>
+                    <span class="bg-secondary-100 text-secondary-600 text-sm px-2 py-1 rounded-full">47 total</span>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-3">
+                    <!-- Search -->
+                    <div class="relative">
+                        <input type="text" placeholder="Search shares..." class="input-field pl-10 w-full sm:w-64" />
+                        <svg class="w-4 h-4 text-secondary-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Filter Dropdown -->
+                    <div class="relative">
+                        <button class="btn-secondary flex items-center space-x-2 w-full sm:w-auto justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                            </svg>
+                            <span>Filter</span>
+                        </button>
+                    </div>
+                    
+                    <!-- View Toggle -->
+                    <div class="flex bg-secondary-100 rounded-lg p-1">
+                        <button id="gridView" class="p-2 rounded-md bg-white shadow-sm text-primary-600">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                            </svg>
+                        </button>
+                        <button id="listView" class="p-2 rounded-md text-secondary-600 hover:text-primary-600 transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Bulk Actions -->
+                    <button class="btn-secondary flex items-center space-x-2 w-full sm:w-auto justify-center">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                        </svg>
+                        <span>Actions</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Share Card 1 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-success-100 text-success-600 text-xs font-medium px-2 py-1 rounded-full">Public</span>
+                            <span class="text-xs text-secondary-500">JavaScript</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">React Performance Tips</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Essential optimization techniques for React applications including memo, useMemo, and useCallback best practices for better performance...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>2.3k views</span>
+                            <span>45 likes</span>
+                        </div>
+                        <span class="text-secondary-500">2 hours ago</span>
+                    </div>
+                </div>
+
+                <!-- Share Card 2 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-warning-100 text-warning-600 text-xs font-medium px-2 py-1 rounded-full">Private</span>
+                            <span class="text-xs text-secondary-500">Tutorial</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">API Design Guidelines</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Comprehensive guide for designing RESTful APIs with best practices, authentication patterns, and error handling strategies...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>892 views</span>
+                            <span>23 likes</span>
+                        </div>
+                        <span class="text-secondary-500">1 day ago</span>
+                    </div>
+                </div>
+
+                <!-- Share Card 3 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-primary-100 text-primary-600 text-xs font-medium px-2 py-1 rounded-full">Team</span>
+                            <span class="text-xs text-secondary-500">Documentation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">Project Setup Guide</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Step-by-step instructions for setting up our development environment, including tools, configurations, and team workflows...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>1.2k views</span>
+                            <span>67 likes</span>
+                        </div>
+                        <span class="text-secondary-500">3 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Share Card 4 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-success-100 text-success-600 text-xs font-medium px-2 py-1 rounded-full">Public</span>
+                            <span class="text-xs text-secondary-500">CSS</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">Modern CSS Techniques</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Advanced CSS techniques including Grid, Flexbox, custom properties, and modern layout patterns for responsive design...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>3.1k views</span>
+                            <span>89 likes</span>
+                        </div>
+                        <span class="text-secondary-500">5 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Share Card 5 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-error-100 text-error-600 text-xs font-medium px-2 py-1 rounded-full">Draft</span>
+                            <span class="text-xs text-secondary-500">Notes</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">Meeting Notes - Q4 Planning</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Quarterly planning session notes covering goals, milestones, resource allocation, and strategic initiatives for the upcoming quarter...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>0 views</span>
+                            <span>0 likes</span>
+                        </div>
+                        <span class="text-secondary-500">1 week ago</span>
+                    </div>
+                </div>
+
+                <!-- Share Card 6 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-success-100 text-success-600 text-xs font-medium px-2 py-1 rounded-full">Public</span>
+                            <span class="text-xs text-secondary-500">Python</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 text-secondary-400 hover:text-primary-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button class="p-1 text-secondary-400 hover:text-error-600 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-lg text-text-primary mb-2">Data Analysis Scripts</h3>
+                    <p class="text-secondary-600 text-sm mb-4 line-clamp-3">Collection of Python scripts for data analysis, visualization, and statistical processing using pandas, matplotlib, and numpy...</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center space-x-4 text-secondary-500">
+                            <span>1.8k views</span>
+                            <span>34 likes</span>
+                        </div>
+                        <span class="text-secondary-500">2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-8">
+                <button class="btn-secondary">
+                    Load More Shares
+                    <svg class="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="py-8 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold text-text-primary">Collections</h2>
+                <button class="btn-primary">
+                    <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    New Collection
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Collection 1 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-400 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-secondary-500">12 shares</span>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Code Snippets</h3>
+                    <p class="text-sm text-secondary-600 mb-4">Useful code snippets and examples for various programming languages</p>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>Public</span>
+                        <span>Updated 2 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Collection 2 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-success-500 to-primary-400 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-secondary-500">8 shares</span>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Documentation</h3>
+                    <p class="text-sm text-secondary-600 mb-4">Project documentation, guides, and technical specifications</p>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>Team</span>
+                        <span>Updated 1 week ago</span>
+                    </div>
+                </div>
+
+                <!-- Collection 3 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-error-400 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-secondary-500">15 shares</span>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Ideas & Notes</h3>
+                    <p class="text-sm text-secondary-600 mb-4">Random thoughts, ideas, and meeting notes for future reference</p>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>Private</span>
+                        <span>Updated 3 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Collection 4 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-secondary-500 to-primary-400 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-secondary-500">6 shares</span>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Learning Resources</h3>
+                    <p class="text-sm text-secondary-600 mb-4">Tutorials, guides, and educational content for skill development</p>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>Public</span>
+                        <span>Updated 5 days ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">TextShare</span>
+                    </div>
+                    <p class="text-secondary-300">Share text beautifully with the world's most elegant text sharing platform.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="text_editor.html" class="hover:text-white transition-colors">Text Editor</a></li>
+                        <li><a href="discover.html" class="hover:text-white transition-colors">Discover</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-secondary-600 mt-8 pt-8 text-center text-secondary-300">
+                <p>&copy; 2025 TextShare. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        const gridViewBtn = document.getElementById('gridView');
+        const listViewBtn = document.getElementById('listView');
+        const contentGrid = document.getElementById('contentGrid');
+
+        gridViewBtn.addEventListener('click', () => {
+            gridViewBtn.classList.add('bg-white', 'shadow-sm', 'text-primary-600');
+            gridViewBtn.classList.remove('text-secondary-600');
+            listViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-primary-600');
+            listViewBtn.classList.add('text-secondary-600');
+            
+            contentGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            listViewBtn.classList.add('bg-white', 'shadow-sm', 'text-primary-600');
+            listViewBtn.classList.remove('text-secondary-600');
+            gridViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-primary-600');
+            gridViewBtn.classList.add('text-secondary-600');
+            
+            contentGrid.className = 'space-y-4';
+            
+            // Update card layout for list view
+            const cards = contentGrid.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.add('flex', 'items-center', 'space-x-6');
+                card.classList.remove('cursor-pointer');
+                
+                // Restructure card content for horizontal layout
+                const content = card.innerHTML;
+                card.innerHTML = `
+                    <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-primary-100 to-accent-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        ${content}
+                    </div>
+                `;
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('input[placeholder="Search shares..."]');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = contentGrid.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Simulate real-time updates
+        function updateStats() {
+            const viewsElement = document.querySelector('.card:nth-child(2) .text-2xl');
+            const currentViews = parseInt(viewsElement.textContent.replace('k', '000').replace('.', ''));
+            const newViews = currentViews + Math.floor(Math.random() * 10);
+            viewsElement.textContent = (newViews / 1000).toFixed(1) + 'k';
+        }
+
+        // Update stats every 30 seconds
+        setInterval(updateStats, 30000);
+
+        // Export functionality
+        function exportData() {
+            const data = {
+                totalShares: 47,
+                totalViews: 12400,
+                engagementRate: 8.7,
+                collections: 8,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'textshare-dashboard-export.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Add export button functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const actionsButton = document.querySelector('button:has(svg[viewBox="0 0 24 24"]):last-of-type');
+            if (actionsButton) {
+                actionsButton.addEventListener('click', exportData);
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
