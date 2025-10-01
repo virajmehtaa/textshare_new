@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Editor - TextShare</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftextshare8100back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-secondary-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">TextShare</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Home</a>
+                    <a href="discover.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Discover</a>
+                    <a href="dashboard.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Dashboard</a>
+                    <a href="profile.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Profile</a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex items-center space-x-4">
+                    <button id="saveBtn" class="btn-secondary">
+                        <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        Save
+                    </button>
+                    <button id="shareBtn" class="btn-primary">
+                        <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Editor Toolbar -->
+    <div class="bg-surface border-b border-secondary-200 px-4 py-3">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between">
+                <!-- Document Info -->
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="documentTitle" value="Untitled Document" class="text-lg font-semibold bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-primary-500 rounded px-2 py-1" />
+                    <div class="flex items-center space-x-2 text-sm text-secondary-600">
+                        <span id="autoSaveStatus" class="flex items-center">
+                            <svg class="w-4 h-4 mr-1 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Auto-saved
+                        </span>
+                        <span>•</span>
+                        <span id="wordCount">0 words</span>
+                        <span>•</span>
+                        <span id="charCount">0 characters</span>
+                    </div>
+                </div>
+
+                <!-- View Controls -->
+                <div class="flex items-center space-x-2">
+                    <div class="flex bg-secondary-100 rounded-lg p-1">
+                        <button id="editorOnlyBtn" class="px-3 py-1 text-sm font-medium rounded-md bg-white text-primary-600 shadow-sm">
+                            Editor
+                        </button>
+                        <button id="splitViewBtn" class="px-3 py-1 text-sm font-medium rounded-md text-secondary-600 hover:text-primary-600">
+                            Split
+                        </button>
+                        <button id="previewOnlyBtn" class="px-3 py-1 text-sm font-medium rounded-md text-secondary-600 hover:text-primary-600">
+                            Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formatting Toolbar -->
+    <div class="bg-surface border-b border-secondary-200 px-4 py-2">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center space-x-1 overflow-x-auto">
+                <!-- Language Selector -->
+                <select id="languageSelect" class="text-sm border border-secondary-200 rounded px-3 py-1 mr-4 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option value="plaintext">Plain Text</option>
+                    <option value="markdown">Markdown</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="json">JSON</option>
+                    <option value="sql">SQL</option>
+                    <option value="bash">Bash</option>
+                    <option value="php">PHP</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="go">Go</option>
+                    <option value="rust">Rust</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="yaml">YAML</option>
+                    <option value="xml">XML</option>
+                    <option value="dockerfile">Dockerfile</option>
+                    <option value="swift">Swift</option>
+                </select>
+
+                <!-- Formatting Buttons -->
+                <div class="flex items-center space-x-1">
+                    <button class="toolbar-btn" data-format="bold" title="Bold (Ctrl+B)">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h6a4 4 0 014 4v.5a4 4 0 01-2.5 3.7A4 4 0 0114 15v.5a4 4 0 01-4 4H4a1 1 0 01-1-1V4zm2 2v3h5a2 2 0 100-4H5zm0 5v3h6a2 2 0 100-4H5z"/>
+                        </svg>
+                    </button>
+                    <button class="toolbar-btn" data-format="italic" title="Italic (Ctrl+I)">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 1a1 1 0 00-1 1v1H6a1 1 0 000 2h1v10H6a1 1 0 100 2h1v1a1 1 0 001 1h4a1 1 0 001-1v-1h1a1 1 0 100-2h-1V5h1a1 1 0 100-2h-1V2a1 1 0 00-1-1H8z"/>
+                        </svg>
+                    </button>
+                    <button class="toolbar-btn" data-format="code" title="Inline Code">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="w-px h-6 bg-secondary-200 mx-2"></div>
+                    
+                    <button class="toolbar-btn" data-format="h1" title="Heading 1">H1</button>
+                    <button class="toolbar-btn" data-format="h2" title="Heading 2">H2</button>
+                    <button class="toolbar-btn" data-format="h3" title="Heading 3">H3</button>
+                    
+                    <div class="w-px h-6 bg-secondary-200 mx-2"></div>
+                    
+                    <button class="toolbar-btn" data-format="ul" title="Bullet List">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="toolbar-btn" data-format="ol" title="Numbered List">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="toolbar-btn" data-format="quote" title="Quote">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0-7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="toolbar-btn" data-format="link" title="Link">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex-1"></div>
+
+                <!-- Additional Tools -->
+                <div class="flex items-center space-x-2">
+                    <button id="fullscreenBtn" class="toolbar-btn" title="Fullscreen (F11)">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                        </svg>
+                    </button>
+                    <button id="exportBtn" class="toolbar-btn" title="Export">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Editor Area -->
+    <div class="flex-1 flex overflow-hidden">
+        <!-- Editor Panel -->
+        <div id="editorPanel" class="flex-1 flex flex-col">
+            <div class="flex-1 relative">
+                <textarea id="textEditor" class="w-full h-full p-6 font-mono text-sm resize-none border-none focus:outline-none bg-surface" placeholder="Start typing your content here...
+
+You can use Markdown formatting:
+# Heading 1
+## Heading 2
+**Bold text**
+*Italic text*
+`inline code`
+
+// Code blocks with syntax highlighting
+function hello() {
+    console.log('Hello, TextShare!');
+}
+
+- Bullet points
+1. Numbered lists
+> Blockquotes
+
+[Links](https://example.com)
+" spellcheck="false"></textarea>
+                
+                <!-- Line Numbers -->
+                <div id="lineNumbers" class="absolute left-0 top-0 w-12 h-full bg-secondary-50 border-r border-secondary-200 text-xs text-secondary-500 font-mono pt-6 pl-2 select-none pointer-events-none hidden">
+                </div>
+            </div>
+        </div>
+
+        <!-- Resize Handle -->
+        <div id="resizeHandle" class="w-1 bg-secondary-200 hover:bg-primary-300 cursor-col-resize transition-colors hidden"></div>
+
+        <!-- Preview Panel -->
+        <div id="previewPanel" class="flex-1 flex flex-col bg-surface border-l border-secondary-200 hidden">
+            <div class="flex items-center justify-between px-6 py-3 border-b border-secondary-200">
+                <h3 class="font-semibold text-text-primary">Live Preview</h3>
+                <div class="flex items-center space-x-2">
+                    <button id="previewRefreshBtn" class="p-1 text-secondary-600 hover:text-primary-600 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="previewContent" class="flex-1 p-6 overflow-y-auto prose prose-slate max-w-none">
+                <div class="text-secondary-500 text-center py-12">
+                    <svg class="w-12 h-12 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    <p>Start typing to see live preview</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collaboration Panel -->
+    <div id="collaborationPanel" class="fixed right-4 top-20 w-80 bg-surface rounded-xl shadow-elevated border border-secondary-200 hidden">
+        <div class="p-4 border-b border-secondary-200">
+            <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-text-primary">Collaboration</h3>
+                <button id="closeCollabBtn" class="p-1 text-secondary-600 hover:text-primary-600 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="p-4 space-y-4">
+            <!-- Active Collaborators -->
+            <div>
+                <h4 class="text-sm font-medium text-text-primary mb-2">Active Collaborators (2)</h4>
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alex Chen" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                            <div class="absolute -bottom-1 -right-1 w-3 h-3 bg-success-500 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-text-primary">Alex Chen</div>
+                            <div class="text-xs text-secondary-600">Editing line 23</div>
+                        </div>
+                        <div class="w-3 h-3 bg-primary-500 rounded-full"></div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah Johnson" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div class="absolute -bottom-1 -right-1 w-3 h-3 bg-success-500 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-text-primary">Sarah Johnson</div>
+                            <div class="text-xs text-secondary-600">Viewing</div>
+                        </div>
+                        <div class="w-3 h-3 bg-accent-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Settings -->
+            <div class="border-t border-secondary-200 pt-4">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Share Settings</h4>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="shareMode" value="private" checked class="text-primary-600 focus:ring-primary-500" />
+                        <span class="ml-2 text-sm text-text-primary">Private</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="shareMode" value="unlisted" class="text-primary-600 focus:ring-primary-500" />
+                        <span class="ml-2 text-sm text-text-primary">Unlisted (link only)</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="shareMode" value="public" class="text-primary-600 focus:ring-primary-500" />
+                        <span class="ml-2 text-sm text-text-primary">Public</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Invite Collaborators -->
+            <div class="border-t border-secondary-200 pt-4">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Invite Collaborators</h4>
+                <div class="flex space-x-2">
+                    <input type="email" placeholder="Enter email address" class="flex-1 text-sm px-3 py-2 border border-secondary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
+                    <button class="px-3 py-2 bg-primary-600 text-white text-sm rounded-lg hover:bg-primary-700 transition-colors">
+                        Invite
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-text-primary mb-2">Export Document</h3>
+                <p class="text-secondary-600">Choose your preferred export format</p>
+            </div>
+            
+            <div class="space-y-3">
+                <button onclick="exportDocument('markdown')" class="w-full flex items-center justify-between p-4 border border-secondary-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-secondary-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="font-medium text-text-primary">Markdown (.md)</div>
+                            <div class="text-sm text-secondary-600">Raw markdown format</div>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <button onclick="exportDocument('html')" class="w-full flex items-center justify-between p-4 border border-secondary-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-secondary-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="font-medium text-text-primary">HTML (.html)</div>
+                            <div class="text-sm text-secondary-600">Formatted web page</div>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <button onclick="exportDocument('pdf')" class="w-full flex items-center justify-between p-4 border border-secondary-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-secondary-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="font-medium text-text-primary">PDF (.pdf)</div>
+                            <div class="text-sm text-secondary-600">Portable document format</div>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <button onclick="exportDocument('txt')" class="w-full flex items-center justify-between p-4 border border-secondary-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-secondary-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 2v10h8V6H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="font-medium text-text-primary">Plain Text (.txt)</div>
+                            <div class="text-sm text-secondary-600">Simple text file</div>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="text-center mt-6">
+                <button onclick="hideExportModal()" class="text-secondary-600 hover:text-primary-600 transition-colors">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Success Modal -->
+    <div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-success-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-text-primary mb-2">Share Created!</h3>
+                <p class="text-secondary-600">Your document has been shared successfully</p>
+            </div>
+            
+            <div class="bg-secondary-50 rounded-lg p-4 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1 mr-3">
+                        <div class="text-sm font-medium text-text-primary mb-1">Share URL</div>
+                        <div id="shareUrl" class="text-sm text-secondary-600 font-mono break-all">https://textshare.com/s/abc123def</div>
+                    </div>
+                    <button onclick="copyShareUrl()" class="p-2 text-secondary-600 hover:text-primary-600 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex space-x-3">
+                <button onclick="window.location.href='share_view.html'" class="flex-1 btn-primary">
+                    View Share
+                </button>
+                <button onclick="hideShareModal()" class="flex-1 btn-secondary">
+                    Continue Editing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="bg-surface border-t border-secondary-200 px-4 py-2">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-sm text-secondary-600">
+            <div class="flex items-center space-x-4">
+                <span>Line <span id="currentLine">1</span>, Column <span id="currentColumn">1</span></span>
+                <span id="selectionInfo" class="hidden">(<span id="selectedChars">0</span> selected)</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="languageStatus">Plain Text</span>
+                <button id="collaborateBtn" class="flex items-center space-x-1 hover:text-primary-600 transition-colors">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                    </svg>
+                    <span>Collaborate</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .toolbar-btn {
+            @apply p-2 text-secondary-600 hover:text-primary-600 hover:bg-primary-50 rounded transition-all duration-200;
+        }
+        
+        .toolbar-btn.active {
+            @apply text-primary-600 bg-primary-100;
+        }
+        
+        .prose {
+            max-width: none;
+        }
+        
+        .prose h1 {
+            @apply text-3xl font-bold text-text-primary mb-4;
+        }
+        
+        .prose h2 {
+            @apply text-2xl font-bold text-text-primary mb-3;
+        }
+        
+        .prose h3 {
+            @apply text-xl font-bold text-text-primary mb-2;
+        }
+        
+        .prose p {
+            @apply text-text-primary mb-4;
+        }
+        
+        .prose code {
+            @apply bg-secondary-100 text-secondary-700 px-2 py-1 rounded text-sm font-mono;
+        }
+        
+        .prose pre {
+            @apply bg-secondary-900 text-white p-4 rounded-lg overflow-x-auto mb-4;
+        }
+        
+        .prose pre code {
+            @apply bg-transparent text-white p-0;
+        }
+        
+        .prose blockquote {
+            @apply border-l-4 border-primary-300 pl-4 italic text-secondary-600 mb-4;
+        }
+        
+        .prose ul {
+            @apply list-disc list-inside mb-4;
+        }
+        
+        .prose ol {
+            @apply list-decimal list-inside mb-4;
+        }
+        
+        .prose a {
+            @apply text-primary-600 hover:text-primary-700 underline;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        #textEditor:focus {
+            outline: none;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        // Editor state
+        let editorState = {
+            content: '',
+            language: 'plaintext',
+            viewMode: 'editor', // 'editor', 'split', 'preview'
+            isFullscreen: false,
+            collaborators: [],
+            autoSaveTimer: null
+        };
+
+        // DOM elements
+        const textEditor = document.getElementById('textEditor');
+        const previewContent = document.getElementById('previewContent');
+        const documentTitle = document.getElementById('documentTitle');
+        const languageSelect = document.getElementById('languageSelect');
+        const wordCount = document.getElementById('wordCount');
+        const charCount = document.getElementById('charCount');
+        const currentLine = document.getElementById('currentLine');
+        const currentColumn = document.getElementById('currentColumn');
+        const languageStatus = document.getElementById('languageStatus');
+
+        // View mode buttons
+        const editorOnlyBtn = document.getElementById('editorOnlyBtn');
+        const splitViewBtn = document.getElementById('splitViewBtn');
+        const previewOnlyBtn = document.getElementById('previewOnlyBtn');
+
+        // Panels
+        const editorPanel = document.getElementById('editorPanel');
+        const previewPanel = document.getElementById('previewPanel');
+        const resizeHandle = document.getElementById('resizeHandle');
+
+        // Initialize editor
+        function initializeEditor() {
+            updateStats();
+            updateCursorPosition();
+            updatePreview();
+            startAutoSave();
+            
+            // Set initial content
+            textEditor.value = textEditor.placeholder;
+            updateStats();
+            updatePreview();
+        }
+
+        // View mode switching
+        function setViewMode(mode) {
+            editorState.viewMode = mode;
+            
+            // Update button states
+            document.querySelectorAll('[id$="Btn"]').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-primary-600', 'shadow-sm');
+                btn.classList.add('text-secondary-600');
+            });
+            
+            if (mode === 'editor') {
+                editorOnlyBtn.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+                editorOnlyBtn.classList.remove('text-secondary-600');
+                editorPanel.classList.remove('hidden');
+                previewPanel.classList.add('hidden');
+                resizeHandle.classList.add('hidden');
+            } else if (mode === 'split') {
+                splitViewBtn.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+                splitViewBtn.classList.remove('text-secondary-600');
+                editorPanel.classList.remove('hidden');
+                previewPanel.classList.remove('hidden');
+                resizeHandle.classList.remove('hidden');
+            } else if (mode === 'preview') {
+                previewOnlyBtn.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+                previewOnlyBtn.classList.remove('text-secondary-600');
+                editorPanel.classList.add('hidden');
+                previewPanel.classList.remove('hidden');
+                resizeHandle.classList.add('hidden');
+            }
+        }
+
+        // Event listeners for view mode
+        editorOnlyBtn.addEventListener('click', () => setViewMode('editor'));
+        splitViewBtn.addEventListener('click', () => setViewMode('split'));
+        previewOnlyBtn.addEventListener('click', () => setViewMode('preview'));
+
+        // Text editor event listeners
+        textEditor.addEventListener('input', () => {
+            updateStats();
+            updatePreview();
+            scheduleAutoSave();
+        });
+
+        textEditor.addEventListener('keyup', updateCursorPosition);
+        textEditor.addEventListener('click', updateCursorPosition);
+
+        // Language selector
+        languageSelect.addEventListener('change', (e) => {
+            editorState.language = e.target.value;
+            languageStatus.textContent = e.target.options[e.target.selectedIndex].text;
+            updatePreview();
+        });
+
+        // Update statistics
+        function updateStats() {
+            const content = textEditor.value;
+            const words = content.trim() ? content.trim().split(/\s+/).length : 0;
+            const chars = content.length;
+            
+            wordCount.textContent = `${words} words`;
+            charCount.textContent = `${chars} characters`;
+        }
+
+        // Update cursor position
+        function updateCursorPosition() {
+            const content = textEditor.value;
+            const cursorPos = textEditor.selectionStart;
+            const lines = content.substring(0, cursorPos).split('\n');
+            const line = lines.length;
+            const column = lines[lines.length - 1].length + 1;
+            
+            currentLine.textContent = line;
+            currentColumn.textContent = column;
+            
+            // Update selection info
+            const selectionLength = textEditor.selectionEnd - textEditor.selectionStart;
+            const selectionInfo = document.getElementById('selectionInfo');
+            const selectedChars = document.getElementById('selectedChars');
+            
+            if (selectionLength > 0) {
+                selectedChars.textContent = selectionLength;
+                selectionInfo.classList.remove('hidden');
+            } else {
+                selectionInfo.classList.add('hidden');
+            }
+        }
+
+        // Update preview
+        function updatePreview() {
+            const content = textEditor.value;
+            
+            if (!content.trim()) {
+                previewContent.innerHTML = `
+                    <div class="text-secondary-500 text-center py-12">
+                        <svg class="w-12 h-12 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                        <p>Start typing to see live preview</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            if (editorState.language === 'markdown') {
+                html = parseMarkdown(content);
+            } else if (editorState.language !== 'plaintext') {
+                html = `<pre><code class="language-${editorState.language}">${escapeHtml(content)}</code></pre>`;
+            } else {
+                html = `<pre class="whitespace-pre-wrap">${escapeHtml(content)}</pre>`;
+            }
+            
+            previewContent.innerHTML = html;
+            
+            // Apply syntax highlighting
+            if (typeof hljs !== 'undefined') {
+                previewContent.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightElement(block);
+                });
+            }
+        }
+
+        // Simple markdown parser
+        function parseMarkdown(text) {
+            return text
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*(.*)\*/gim, '<em>$1</em>')
+                .replace(/`([^`]+)`/gim, '<code>$1</code>')
+                .replace(/```(\w+)?\n([\s\S]*?)```/gim, '<pre><code class="language-$1">$2</code></pre>')
+                .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+                .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2">$1</a>')
+                .replace(/\n/gim, '<br>');
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Formatting functions
+        function insertFormat(format) {
+            const start = textEditor.selectionStart;
+            const end = textEditor.selectionEnd;
+            const selectedText = textEditor.value.substring(start, end);
+            let replacement = '';
+            
+            switch (format) {
+                case 'bold':
+                    replacement = `**${selectedText}**`;
+                    break;
+                case 'italic':
+                    replacement = `*${selectedText}*`;
+                    break;
+                case 'code':
+                    replacement = `\`${selectedText}\``;
+                    break;
+                case 'h1':
+                    replacement = `# ${selectedText}`;
+                    break;
+                case 'h2':
+                    replacement = `## ${selectedText}`;
+                    break;
+                case 'h3':
+                    replacement = `### ${selectedText}`;
+                    break;
+                case 'ul':
+                    replacement = `* ${selectedText}`;
+                    break;
+                case 'ol':
+                    replacement = `1. ${selectedText}`;
+                    break;
+                case 'quote':
+                    replacement = `> ${selectedText}`;
+                    break;
+                case 'link':
+                    const url = prompt('Enter URL:');
+                    if (url) {
+                        replacement = `[${selectedText || 'Link text'}](${url})`;
+                    } else {
+                        return;
+                    }
+                    break;
+            }
+            
+            textEditor.value = textEditor.value.substring(0, start) + replacement + textEditor.value.substring(end);
+            textEditor.focus();
+            textEditor.setSelectionRange(start + replacement.length, start + replacement.length);
+            
+            updateStats();
+            updatePreview();
+            scheduleAutoSave();
+        }
+
+        // Toolbar button event listeners
+        document.querySelectorAll('.toolbar-btn[data-format]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                insertFormat(btn.dataset.format);
+            });
+        });
+
+        // Auto-save functionality
+        function startAutoSave() {
+            setInterval(() => {
+                if (textEditor.value !== editorState.content) {
+                    saveDocument();
+                }
+            }, 30000); // Auto-save every 30 seconds
+        }
+
+        function scheduleAutoSave() {
+            clearTimeout(editorState.autoSaveTimer);
+            editorState.autoSaveTimer = setTimeout(() => {
+                saveDocument();
+            }, 2000); // Save 2 seconds after user stops typing
+        }
+
+        function saveDocument() {
+            editorState.content = textEditor.value;
+            
+            // Simulate save
+            const autoSaveStatus = document.getElementById('autoSaveStatus');
+            autoSaveStatus.innerHTML = `
+                <svg class="w-4 h-4 mr-1 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Auto-saved
+            `;
+            
+            console.log('Document saved:', {
+                title: documentTitle.value,
+                content: editorState.content,
+                language: editorState.language,
+                timestamp: new Date().toISOString()
+            });
+        }
+
+        // Share functionality
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            if (!textEditor.value.trim()) {
+                alert('Please add some content before sharing');
+                return;
+            }
+            
+            // Generate share ID
+            const shareId = Math.random().toString(36).substr(2, 9);
+            const shareUrl = `https://textshare.com/s/${shareId}`;
+            
+            document.getElementById('shareUrl').textContent = shareUrl;
+            showShareModal();
+        });
+
+        // Save functionality
+        document.getElementById('saveBtn').addEventListener('click', saveDocument);
+
+        // Export functionality
+        document.getElementById('exportBtn').addEventListener('click', showExportModal);
+
+        // Fullscreen functionality
+        document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+
+        // Collaboration functionality
+        document.getElementById('collaborateBtn').addEventListener('click', () => {
+            document.getElementById('collaborationPanel').classList.toggle('hidden');
+        });
+
+        document.getElementById('closeCollabBtn').addEventListener('click', () => {
+            document.getElementById('collaborationPanel').classList.add('hidden');
+        });
+
+        // Modal functions
+        function showShareModal() {
+            document.getElementById('shareModal').classList.remove('hidden');
+            document.getElementById('shareModal').classList.add('flex');
+        }
+
+        function hideShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+            document.getElementById('shareModal').classList.remove('flex');
+        }
+
+        function showExportModal() {
+            document.getElementById('exportModal').classList.remove('hidden');
+            document.getElementById('exportModal').classList.add('flex');
+        }
+
+        function hideExportModal() {
+            document.getElementById('exportModal').classList.add('hidden');
+            document.getElementById('exportModal').classList.remove('flex');
+        }
+
+        function copyShareUrl() {
+            const shareUrl = document.getElementById('shareUrl').textContent;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                alert('Share URL copied to clipboard!');
+            });
+        }
+
+        function exportDocument(format) {
+            const content = textEditor.value;
+            const title = documentTitle.value || 'Untitled Document';
+            
+            let blob, filename;
+            
+            switch (format) {
+                case 'markdown':
+                    blob = new Blob([content], { type: 'text/markdown' });
+                    filename = `${title}.md`;
+                    break;
+                case 'html':
+                    const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+    <title>${title}</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+        pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+        code { background: #f5f5f5; padding: 0.2rem 0.4rem; border-radius: 3px; }
+    </style>
+</head>
+<body>
+${parseMarkdown(content)}
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>`;
+                    blob = new Blob([htmlContent], { type: 'text/html' });
+                    filename = `${title}.html`;
+                    break;
+                case 'txt':
+                    blob = new Blob([content], { type: 'text/plain' });
+                    filename = `${title}.txt`;
+                    break;
+                case 'pdf':
+                    alert('PDF export would be implemented with a PDF generation library');
+                    hideExportModal();
+                    return;
+            }
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            hideExportModal();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                editorState.isFullscreen = true;
+            } else {
+                document.exitFullscreen();
+                editorState.isFullscreen = false;
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case 'b':
+                        e.preventDefault();
+                        insertFormat('bold');
+                        break;
+                    case 'i':
+                        e.preventDefault();
+                        insertFormat('italic');
+                        break;
+                    case 's':
+                        e.preventDefault();
+                        saveDocument();
+                        break;
+                    case 'Enter':
+                        e.preventDefault();
+                        document.getElementById('shareBtn').click();
+                        break;
+                }
+            }
+            
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+
+        // Close modals on outside click
+        document.getElementById('shareModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                hideShareModal();
+            }
+        });
+
+        document.getElementById('exportModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                hideExportModal();
+            }
+        });
+
+        // Initialize editor on page load
+        document.addEventListener('DOMContentLoaded', initializeEditor);
+
+        // Simulate real-time collaboration
+        function simulateCollaboration() {
+            // This would be implemented with WebSocket connections in a real application
+            setInterval(() => {
+                // Simulate cursor movements and edits from collaborators
+                console.log('Simulating real-time collaboration...');
+            }, 5000);
+        }
+
+        simulateCollaboration();
+    
+
