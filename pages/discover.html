@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover - TextShare</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftextshare8100back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-secondary-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">TextShare</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Home</a>
+                    <a href="discover.html" class="text-primary-600 font-medium">Discover</a>
+                    <a href="dashboard.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Dashboard</a>
+                    <a href="profile.html" class="text-secondary-600 hover:text-primary-600 transition-colors">Profile</a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='text_editor.html'" class="btn-primary">
+                        <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Create
+                    </button>
+                    <button class="p-2 text-secondary-600 hover:text-primary-600 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-50 via-surface to-accent-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+                    Discover <span class="text-gradient">Amazing Content</span>
+                </h1>
+                <p class="text-xl text-secondary-600 max-w-3xl mx-auto">
+                    Explore exceptional text shares from our creative community. Find inspiration, learn something new, and discover content that matters.
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search for content, creators, or topics..." class="w-full pl-12 pr-4 py-4 text-lg border border-secondary-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200" />
+                    <svg class="w-6 h-6 text-secondary-400 absolute left-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Tags -->
+    <section class="py-8 bg-surface border-b border-secondary-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-text-primary">Trending Topics</h2>
+                <button class="text-sm text-primary-600 hover:text-primary-700 transition-colors">View All</button>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-primary-200 transition-colors">#javascript</span>
+                <span class="bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-accent-200 transition-colors">#design</span>
+                <span class="bg-success-100 text-success-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-success-200 transition-colors">#tutorial</span>
+                <span class="bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-secondary-200 transition-colors">#productivity</span>
+                <span class="bg-error-100 text-error-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-error-200 transition-colors">#react</span>
+                <span class="bg-warning-100 text-warning-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-warning-200 transition-colors">#api</span>
+                <span class="bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-primary-200 transition-colors">#css</span>
+                <span class="bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium cursor-pointer hover:bg-accent-200 transition-colors">#startup</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="lg:w-80 flex-shrink-0">
+                <div class="card sticky top-24">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Filters</h3>
+                        <button id="resetFilters" class="text-sm text-secondary-600 hover:text-primary-600 transition-colors">Reset</button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-text-primary mb-3">Category</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" checked />
+                                <span class="ml-2 text-sm text-secondary-700">All Categories</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Code Snippets</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Tutorials</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Articles</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Documentation</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Notes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Date Range Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-text-primary mb-3">Date Range</h4>
+                        <select class="w-full px-3 py-2 border border-secondary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <option>All Time</option>
+                            <option>Today</option>
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort By -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-text-primary mb-3">Sort By</h4>
+                        <select class="w-full px-3 py-2 border border-secondary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <option>Most Popular</option>
+                            <option>Most Recent</option>
+                            <option>Most Viewed</option>
+                            <option>Most Liked</option>
+                            <option>Trending</option>
+                        </select>
+                    </div>
+
+                    <!-- Language Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-text-primary mb-3">Programming Language</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">JavaScript</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">Python</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">React</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">CSS</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
+                                <span class="ml-2 text-sm text-secondary-700">HTML</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Featured Creators -->
+                    <div>
+                        <h4 class="font-medium text-text-primary mb-3">Featured Creators</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 cursor-pointer hover:bg-secondary-50 p-2 rounded-lg transition-colors" onclick="window.location.href='profile.html'">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Creator" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Alex Chen</div>
+                                    <div class="text-xs text-secondary-600">142 shares</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 cursor-pointer hover:bg-secondary-50 p-2 rounded-lg transition-colors" onclick="window.location.href='profile.html'">
+                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Sarah Johnson</div>
+                                    <div class="text-xs text-secondary-600">98 shares</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 cursor-pointer hover:bg-secondary-50 p-2 rounded-lg transition-colors" onclick="window.location.href='profile.html'">
+                                <img src="https://images.pixabay.com/photo/2016/11/29/09/38/adult-1868750_1280.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Marcus Rodriguez</div>
+                                    <div class="text-xs text-secondary-600">76 shares</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Grid -->
+            <main class="flex-1">
+                <!-- Results Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-text-primary">Discover Content</h2>
+                        <p class="text-secondary-600 mt-1">Showing 2,847 results</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button id="gridView" class="p-2 text-primary-600 bg-primary-100 rounded-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                            </svg>
+                        </button>
+                        <button id="listView" class="p-2 text-secondary-600 hover:text-primary-600 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div id="contentGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+                    <!-- Content Item 1 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">Alex Chen</div>
+                                    <div class="text-sm text-secondary-600">@alexdev</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">247</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-primary-100 text-primary-700 text-xs font-medium px-2 py-1 rounded-full">JavaScript</span>
+                                <span class="bg-accent-100 text-accent-700 text-xs font-medium px-2 py-1 rounded-full">🔥 Trending</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">Advanced React Hooks Patterns</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Comprehensive guide to advanced React hooks patterns including custom hooks, useReducer patterns, and performance optimization techniques...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>5.2k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>89</span>
+                                </span>
+                            </div>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Item 2 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">Sarah Johnson</div>
+                                    <div class="text-sm text-secondary-600">@sarahwrites</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">189</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-success-100 text-success-700 text-xs font-medium px-2 py-1 rounded-full">Design</span>
+                                <span class="bg-warning-100 text-warning-700 text-xs font-medium px-2 py-1 rounded-full">⚡ Popular</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">Design System Architecture</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Complete guide to building scalable design systems with component libraries, design tokens, and documentation strategies...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>3.8k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>67</span>
+                                </span>
+                            </div>
+                            <span>5 hours ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Item 3 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pixabay.com/photo/2016/11/29/09/38/adult-1868750_1280.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">Marcus Rodriguez</div>
+                                    <div class="text-sm text-secondary-600">@marcustech</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">312</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-accent-100 text-accent-700 text-xs font-medium px-2 py-1 rounded-full">API</span>
+                                <span class="bg-success-100 text-success-700 text-xs font-medium px-2 py-1 rounded-full">📈 Rising</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">RESTful API Best Practices</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Comprehensive guide to designing intuitive, scalable, and maintainable RESTful APIs with proper error handling and documentation...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>4.1k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>95</span>
+                                </span>
+                            </div>
+                            <span>1 day ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Item 4 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">Emma Wilson</div>
+                                    <div class="text-sm text-secondary-600">@emmacodes</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">156</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-error-100 text-error-700 text-xs font-medium px-2 py-1 rounded-full">CSS</span>
+                                <span class="bg-primary-100 text-primary-700 text-xs font-medium px-2 py-1 rounded-full">Tutorial</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">Modern CSS Grid Layouts</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Master CSS Grid with practical examples and advanced techniques for creating responsive, flexible layouts...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>2.9k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>43</span>
+                                </span>
+                            </div>
+                            <span>3 days ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Item 5 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">David Kim</div>
+                                    <div class="text-sm text-secondary-600">@daviddev</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">203</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-secondary-100 text-secondary-700 text-xs font-medium px-2 py-1 rounded-full">Python</span>
+                                <span class="bg-accent-100 text-accent-700 text-xs font-medium px-2 py-1 rounded-full">Machine Learning</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">Python Data Analysis Toolkit</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Essential Python libraries and techniques for data analysis, visualization, and machine learning workflows...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>3.5k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>78</span>
+                                </span>
+                            </div>
+                            <span>1 week ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Item 6 -->
+                    <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_1280.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creator" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div>
+                                    <div class="font-medium text-text-primary">Lisa Zhang</div>
+                                    <div class="text-sm text-secondary-600">@lisadesign</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-error-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-secondary-600">134</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-warning-100 text-warning-700 text-xs font-medium px-2 py-1 rounded-full">UX</span>
+                                <span class="bg-success-100 text-success-700 text-xs font-medium px-2 py-1 rounded-full">Research</span>
+                            </div>
+                            <h3 class="font-semibold text-lg text-text-primary mb-2">User Research Methodologies</h3>
+                            <p class="text-secondary-600 text-sm line-clamp-3">Comprehensive guide to user research methods, from interviews and surveys to usability testing and analytics...</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-secondary-500">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>1.8k</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span>52</span>
+                                </span>
+                            </div>
+                            <span>2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center">
+                    <button id="loadMore" class="btn-secondary">
+                        Load More Content
+                        <svg class="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Personalized Recommendations -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Recommended for You</h2>
+                <p class="text-lg text-secondary-600">Personalized content based on your interests and activity</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Recommendation 1 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-primary-100 text-primary-700 text-xs font-medium px-2 py-1 rounded-full">React</span>
+                            <span class="bg-accent-100 text-accent-700 text-xs font-medium px-2 py-1 rounded-full">💡 For You</span>
+                        </div>
+                        <h3 class="font-semibold text-text-primary mb-2">React Performance Tips</h3>
+                        <p class="text-secondary-600 text-sm line-clamp-2">Essential optimization techniques...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>1.2k views</span>
+                        <span>by @reactpro</span>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-success-100 text-success-700 text-xs font-medium px-2 py-1 rounded-full">CSS</span>
+                            <span class="bg-warning-100 text-warning-700 text-xs font-medium px-2 py-1 rounded-full">💡 For You</span>
+                        </div>
+                        <h3 class="font-semibold text-text-primary mb-2">CSS Animation Secrets</h3>
+                        <p class="text-secondary-600 text-sm line-clamp-2">Advanced animation techniques...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>890 views</span>
+                        <span>by @cssmaster</span>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-error-100 text-error-700 text-xs font-medium px-2 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-accent-100 text-accent-700 text-xs font-medium px-2 py-1 rounded-full">💡 For You</span>
+                        </div>
+                        <h3 class="font-semibold text-text-primary mb-2">Modern JS Patterns</h3>
+                        <p class="text-secondary-600 text-sm line-clamp-2">Latest JavaScript patterns...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>2.1k views</span>
+                        <span>by @jsexpert</span>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="card hover:shadow-elevated transition-all duration-300 cursor-pointer" onclick="window.location.href='share_view.html'">
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-secondary-100 text-secondary-700 text-xs font-medium px-2 py-1 rounded-full">API</span>
+                            <span class="bg-success-100 text-success-700 text-xs font-medium px-2 py-1 rounded-full">💡 For You</span>
+                        </div>
+                        <h3 class="font-semibold text-text-primary mb-2">GraphQL vs REST</h3>
+                        <p class="text-secondary-600 text-sm line-clamp-2">Comprehensive comparison...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-secondary-500">
+                        <span>1.5k views</span>
+                        <span>by @apidev</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">TextShare</span>
+                    </div>
+                    <p class="text-secondary-300">Share text beautifully with the world's most elegant text sharing platform.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="text_editor.html" class="hover:text-white transition-colors">Text Editor</a></li>
+                        <li><a href="discover.html" class="hover:text-white transition-colors">Discover</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-secondary-300">
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white transition-colors">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-secondary-600 mt-8 pt-8 text-center text-secondary-300">
+                <p>&copy; 2025 TextShare. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            // Simulate search functionality
+            console.log('Searching for:', searchTerm);
+        });
+
+        // Filter reset functionality
+        document.getElementById('resetFilters').addEventListener('click', function() {
+            // Reset all checkboxes and selects
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const selects = document.querySelectorAll('select');
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.parentElement.textContent.includes('All Categories')) {
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false;
+                }
+            });
+            
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+        });
+
+        // View toggle functionality
+        document.getElementById('gridView').addEventListener('click', function() {
+            this.classList.add('text-primary-600', 'bg-primary-100');
+            this.classList.remove('text-secondary-600');
+            document.getElementById('listView').classList.remove('text-primary-600', 'bg-primary-100');
+            document.getElementById('listView').classList.add('text-secondary-600');
+            
+            // Update grid layout
+            document.getElementById('contentGrid').className = 'grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8';
+        });
+
+        document.getElementById('listView').addEventListener('click', function() {
+            this.classList.add('text-primary-600', 'bg-primary-100');
+            this.classList.remove('text-secondary-600');
+            document.getElementById('gridView').classList.remove('text-primary-600', 'bg-primary-100');
+            document.getElementById('gridView').classList.add('text-secondary-600');
+            
+            // Update to list layout
+            document.getElementById('contentGrid').className = 'grid grid-cols-1 gap-6 mb-8';
+        });
+
+        // Load more functionality
+        document.getElementById('loadMore').addEventListener('click', function() {
+            // Simulate loading more content
+            this.innerHTML = '<svg class="w-4 h-4 mr-2 inline animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>Loading...';
+            
+            setTimeout(() => {
+                this.innerHTML = 'Load More Content <svg class="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>';
+                // Here you would typically load more content
+            }, 2000);
+        });
+
+        // Trending tag clicks
+        document.querySelectorAll('[class*="rounded-full"][class*="cursor-pointer"]').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const tagText = this.textContent;
+                document.getElementById('searchInput').value = tagText;
+                // Trigger search
+                console.log('Searching for tag:', tagText);
+            });
+        });
+
+        // Infinite scroll simulation
+        let isLoading = false;
+        window.addEventListener('scroll', function() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && !isLoading) {
+                isLoading = true;
+                // Simulate loading more content
+                setTimeout(() => {
+                    isLoading = false;
+                    console.log('Loaded more content via infinite scroll');
+                }, 1000);
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
